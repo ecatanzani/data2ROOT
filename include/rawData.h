@@ -36,6 +36,7 @@ class rawData
         void set_data_entry(std::vector<std::string> &mergeData);
         void branch_tree(TTree &tree);
         void export_to_tree(TTree &tree) { tree.Fill(); }
+        void getDataEvent();
         ~rawData() {};
     private:
         ULong64_t evID;

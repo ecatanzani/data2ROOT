@@ -89,17 +89,37 @@ void rawData::set_data_entry(std::vector<std::string> &mergeData)
 
 void rawData::branch_tree(TTree &tree)
 {
-    tree.Branch("EventID",&evID,"EventID/ULong64_t");
-    tree.Branch("DAMPE_timestamp",&DAMPE_timestamp,"DAMPE_timestamp/ULong64_t");
-    tree.Branch("energy",&energy,"DAMPE_timestamp/Double_t");
-    tree.Branch("STK_theta",&STK_theta,"STK_theta/Double_t");
-    tree.Branch("STK_phi",&STK_phi,"STK_phi/Double_t");
+    tree.Branch("EventID",&evID,"EventID/l");
+    tree.Branch("DAMPE_timestamp",&DAMPE_timestamp,"DAMPE_timestamp/l");
+    tree.Branch("energy",&energy,"DAMPE_timestamp/D");
+    tree.Branch("STK_theta",&STK_theta,"STK_theta/D");
+    tree.Branch("STK_phi",&STK_phi,"STK_phi/D");
 
-    tree.Branch("SatGeo_P_X",&SatGeo_P_X,"SatGeo_P_X/Double_t");
-    tree.Branch("SatGeo_P_Y",&SatGeo_P_Y,"SatGeo_P_Y/Double_t");
-    tree.Branch("SatGeo_P_Z",&SatGeo_P_Z,"SatGeo_P_Z/Double_t");
+    tree.Branch("SatGeo_P_X",&SatGeo_P_X,"SatGeo_P_X/D");
+    tree.Branch("SatGeo_P_Y",&SatGeo_P_Y,"SatGeo_P_Y/D");
+    tree.Branch("SatGeo_P_Z",&SatGeo_P_Z,"SatGeo_P_Z/D");
 
-    tree.Branch("SatGeo_V_X",&SatGeo_V_X,"SatGeo_V_X/Double_t");
-    tree.Branch("SatGeo_V_Y",&SatGeo_V_Y,"SatGeo_V_Y/Double_t");
-    tree.Branch("SatGeo_V_Z",&SatGeo_V_Z,"SatGeo_V_Z/Double_t");
+    tree.Branch("SatGeo_V_X",&SatGeo_V_X,"SatGeo_V_X/D");
+    tree.Branch("SatGeo_V_Y",&SatGeo_V_Y,"SatGeo_V_Y/D");
+    tree.Branch("SatGeo_V_Z",&SatGeo_V_Z,"SatGeo_V_Z/D");
+}
+
+void rawData::getDataEvent()
+{
+    std::cout << "\n****************\n";
+    std::cout << "Data event sumup: \n\n";
+    
+    std::cout << "EventID: \t" << evID << std::endl;
+    std::cout << "DAMPE_timestamp \t" << DAMPE_timestamp << std::endl;
+    std::cout << "Energy (GeV) \t" << energy << std::endl;
+    std::cout << "STK_theta \t" << STK_theta << std::endl;
+    std::cout << "STK_phi \t" << STK_phi << std::endl;
+    std::cout << "Satellite Position X (GeoCenter coord.) \t" << SatGeo_P_X << std::endl;
+    std::cout << "Satellite Position Y (GeoCenter coord.) \t" << SatGeo_P_Y << std::endl;
+    std::cout << "Satellite Position Z (GeoCenter coord.) \t" << SatGeo_P_Z << std::endl;
+    std::cout << "Satellite Velocity X (GeoCenter coord.) \t" << SatGeo_V_X << std::endl;
+    std::cout << "Satellite Velocity Y (GeoCenter coord.) \t" << SatGeo_V_Y << std::endl;
+    std::cout << "Satellite Velocity Z (GeoCenter coord.) \t" << SatGeo_V_Z << std::endl;
+
+    std::cout << "\n****************\n";
 }

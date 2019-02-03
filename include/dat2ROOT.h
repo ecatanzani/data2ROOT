@@ -12,8 +12,11 @@
 #include "TTree.h"
 #include "TFile.h"
 
-#define nWord 17
 #include "rawData.h"
+
+#define nWord 17
+#define inspectEvent 100
+
 
 extern void streamer(rawData &dObj,std::string inFile,TTree &tree);
 

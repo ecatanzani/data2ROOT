@@ -13,7 +13,7 @@ int main(int argc,char *argv[])
     std::string outFile(argv[2]);
 
     rawData dCollect;
-    TTree dataTree;
+    TTree dataTree("dataTree","Converted Data Tree");
 
     dCollect.branch_tree(dataTree);
 
@@ -28,10 +28,6 @@ int main(int argc,char *argv[])
 
     dataTree.Write();
     result.Close();
-
-    ////// Cleaning
-
-    dataTree.Delete();
 
     return 0;
 

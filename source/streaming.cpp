@@ -3,6 +3,7 @@
 void streamer(rawData &dObj,std::string inFile,TTree &tree)
 {
     int wCounter = 0;
+    int rCounter = 0;
     std::vector <std::string> tmpData;
     tmpData.resize(nWord);
     std::ifstream input_file(inFile.c_str(),std::ios::in);
@@ -16,12 +17,22 @@ void streamer(rawData &dObj,std::string inFile,TTree &tree)
     std::istringstream input_stream(input_string);
     while(input_stream>>tmp_str)
     {
+        //std::cout << "char: " << tmp_str << std::endl;
         tmpData[wCounter] = tmp_str;
-        ++wCounter;
         if(wCounter==16)
         {
             dObj.set_data_entry(tmpData);
+            dObj.export_to_tree(tree);
             wCounter = 0;
+            ++rCounter;
+            /*
+            if(rCounter==inspectEvent)
+                dObj.getDataEvent();
+            */
         }
+        else
+            ++wCounter;
     }
+
+    std::cout << "\n" << rCounter << " lines have been read from data file \n\n";
 }
