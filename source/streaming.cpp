@@ -22,17 +22,21 @@ void streamer(rawData &dObj,std::string inFile,TTree &tree)
         if(wCounter==16)
         {
             dObj.set_data_entry(tmpData);
+            dObj.set_max_min_values();
             dObj.export_to_tree(tree);
             wCounter = 0;
             ++rCounter;
-            /*
-            if(rCounter==inspectEvent)
-                dObj.getDataEvent();
-            */
+            if(inspectEvent)
+                if(rCounter==selEvent)
+                    dObj.getDataEvent();
         }
         else
             ++wCounter;
     }
 
-    std::cout << "\n" << rCounter << " lines have been read from data file \n\n";
+    if(verboseOut)
+    {
+        std::cout << "\n" << rCounter << " lines have been read from data file" << std::endl;
+        dObj.highlightMaxMin();
+    }
 }

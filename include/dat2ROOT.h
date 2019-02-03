@@ -15,7 +15,9 @@
 #include "rawData.h"
 
 #define nWord 17
-#define inspectEvent 100
+#define inspectEvent false
+#define verboseOut true
+#define selEvent 2
 
 
 extern void streamer(rawData &dObj,std::string inFile,TTree &tree);
